@@ -1,7 +1,8 @@
-import {Button, Icon, Input} from '@rneui/themed';
+import {Button, Icon} from '@rneui/themed';
 import React, {FC, useState, useEffect} from 'react';
-import {Modal, View, StyleSheet, Text} from 'react-native';
+import {Modal, View, StyleSheet} from 'react-native';
 import useFoodStorage from '../../hooks/useFoodStorage';
+import ModalInput from '../ModalInput';
 
 type AddFoodModalProps = {
   onClose: (shouldUpdate?: boolean) => void;
@@ -48,39 +49,22 @@ const AddFoodModal: FC<AddFoodModalProps> = ({onClose, visible}) => {
               type="clear"
             />
           </View>
-          <View style={styles.formItem}>
-            <View style={styles.inputContainer}>
-              <Input
-                value={calories}
-                onChangeText={(text: string) => setCalories(text)}
-              />
-            </View>
-            <View style={styles.legendContainer}>
-              <Text style={styles.legend}>CAL</Text>
-            </View>
-          </View>
-          <View style={styles.formItem}>
-            <View style={styles.inputContainer}>
-              <Input
-                value={name}
-                onChangeText={(text: string) => setName(text)}
-              />
-            </View>
-            <View style={styles.legendContainer}>
-              <Text style={styles.legend}>Name</Text>
-            </View>
-          </View>
-          <View style={styles.formItem}>
-            <View style={styles.inputContainer}>
-              <Input
-                value={portion}
-                onChangeText={(text: string) => setPortion(text)}
-              />
-            </View>
-            <View style={styles.legendContainer}>
-              <Text style={styles.legend}>Portion</Text>
-            </View>
-          </View>
+
+          <ModalInput
+            value={calories}
+            onChangeText={(text: string) => setCalories(text)}
+            legend="CAL"
+          />
+          <ModalInput
+            value={name}
+            onChangeText={(text: string) => setName(text)}
+            legend="Name"
+          />
+          <ModalInput
+            value={portion}
+            onChangeText={(text: string) => setPortion(text)}
+            legend="Portion"
+          />
           <View style={styles.btnContainer}>
             <Button
               title="Add"
@@ -124,19 +108,6 @@ const styles = StyleSheet.create({
   },
   closeContainer: {
     alignItems: 'flex-end',
-  },
-  formItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  inputContainer: {
-    flex: 2,
-  },
-  legendContainer: {
-    flex: 1,
-  },
-  legend: {
-    fontWeight: '500',
   },
   btnContainer: {
     alignItems: 'flex-end',
