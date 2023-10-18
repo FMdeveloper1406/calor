@@ -10,13 +10,14 @@ import MealItem from '../../components/MealItem';
 
 const AddFood = () => {
   const [visible, setIsVisible] = useState<boolean>(false);
-  const [allFoods, setAllFoods] = useState<Meal[]>([]);
+  const [foods, setFoods] = useState<Meal[]>([]);
+  const [search, setSearch] = useState<string>('');
   const {onGetFoods} = useFoodStorage();
 
   const loadFoods = async () => {
     try {
       const foodsResponse = await onGetFoods();
-      setAllFoods(foodsResponse);
+      setFoods(foodsResponse);
     } catch (error) {
       console.error(error);
     }
@@ -32,6 +33,20 @@ const AddFood = () => {
       loadFoods();
     }
     setIsVisible(false);
+  };
+
+  const handleSearchPress = async () => {
+    try {
+      const result = await onGetFoods();
+      setFoods(
+        result.filter((item: Meal) =>
+          item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
+        ),
+      );
+    } catch (error) {
+      console.error(error);
+      setFoods([]);
+    }
   };
 
   return (
@@ -52,7 +67,11 @@ const AddFood = () => {
       </View>
       <View style={styles.searchContainer}>
         <View style={styles.inputContainer}>
-          <Input placeholder="juice, hamburguer, bread" />
+          <Input
+            placeholder="juice, hamburguer, bread"
+            value={search}
+            onChangeText={(text: string) => setSearch(text)}
+          />
         </View>
 
         <Button
@@ -60,10 +79,11 @@ const AddFood = () => {
           color="#ade8af"
           titleStyle={styles.searchBtnTitle}
           radius="lg"
+          onPress={handleSearchPress}
         />
       </View>
       <ScrollView style={styles.content}>
-        {allFoods?.map(meal => (
+        {foods?.map(meal => (
           <MealItem key={`my-meal-item-${meal.name}`} {...meal} />
         ))}
       </ScrollView>
