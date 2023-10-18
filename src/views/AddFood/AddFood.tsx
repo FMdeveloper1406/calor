@@ -1,14 +1,25 @@
 import React, {useState} from 'react';
 
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Alert} from 'react-native';
 import Header from '../../components/Header';
 import {Button, Icon, Input} from '@rneui/themed';
 import AddFoodModal from '../../components/AddFoodModal';
+import useFoodStorage from '../../hooks/useFoodStorage';
 
 const AddFood = () => {
   const [visible, setIsVisible] = useState<boolean>(false);
+  const {onGetFoods} = useFoodStorage();
 
-  const handleModalClose = () => {
+  const handleModalClose = async (shouldUpdate?: boolean) => {
+    if (shouldUpdate) {
+      Alert.alert('Food successfully stored');
+      try {
+        const foodsResponse = await onGetFoods();
+        console.log(foodsResponse);
+      } catch (error) {
+        console.error(error);
+      }
+    }
     setIsVisible(false);
   };
 
@@ -48,6 +59,8 @@ const AddFood = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 12,
+    backgroundColor: '#fff',
+    flex: 1,
   },
   addFoodContainer: {
     flexDirection: 'row',
