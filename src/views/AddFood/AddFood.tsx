@@ -25,6 +25,7 @@ const AddFood = () => {
 
   useEffect(() => {
     loadFoods().catch(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleModalClose = async (shouldUpdate?: boolean) => {
