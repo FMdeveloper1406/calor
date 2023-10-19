@@ -1,79 +1,41 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Calorie Tracker App (React Native)
 
-# Getting Started
+![App Screenshot](screenshot.png)
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+A simple React Native app for tracking daily calorie consumption, with the ability to add and remove meals and see how many calories of the recommended daily total you have in a circular graph.
 
-## Step 1: Start the Metro Server
+## Features
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- Track daily calorie consumption, compare it to the recommended total, and visualize it on a circular chart.
+- Add and remove meals for the day.
+- Two screens: a main screen with the pie chart showing the percentage of recommended daily calories with the meals of the day and an "Add Meal" screen for adding generic meals with calories and portions.
+- The "Add Food" screen presents a modal with inputs for calories, name, and portion.
+- Implement food search and filtering functionality.
+- Utilize the React Native Elements UI toolkit for components.
+- Used the `canGoBack` and `goBack` parameters from the `useNavigation` hook for navigation control.
+- Used Async Storage for asynchronous, persistent key-value storage in React Native, involving async/await, try-catch, and Promises for code handling.
+- Created custom hooks to perform all the functions of the application.
+- Managed date and time using the `date-fns` library.
+- Utilize the `useFocusEffect` hook from `react-navigation` in combination with `useCallback` for performance optimization.
+- Use the `react-native-circular-progress-indicator` package for the circular chart.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Installation
 
-```bash
-# using npm
-npm start
+1. Clone the repository: `git clone hhttps://github.com/pdelbarrio/appcalorias`
+2. Navigate to the project directory: `cd appcalorias`
+3. Install dependencies: `npm install`
 
-# OR using Yarn
-yarn start
-```
+## Usage
 
-## Step 2: Start your Application
+- Start the development server: `npm start`
+- Launch the app on your preferred emulator or device.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+Captura1: | Captura2: | Captura3:
+--- | --- | ---
+![Calorias1](https://res.cloudinary.com/getoutbcn/image/upload/v1697737826/portfolio/projects/caloriestracker/Calorias1_o7p0vg.png) | ![Calorias2](https://res.cloudinary.com/getoutbcn/image/upload/v1697737832/portfolio/projects/caloriestracker/Calorias2_rpt2u5.png) | ![Calorias3](https://res.cloudinary.com/getoutbcn/image/upload/v1697737838/portfolio/projects/caloriestracker/Calorias3_hgmhhz.png)
 
-### For Android
+Captura4: | Captura5: | Captura6:
+--- | --- | ---
+![Calorias4](https://res.cloudinary.com/getoutbcn/image/upload/v1697737847/portfolio/projects/caloriestracker/Calorias4_c0w1rm.png) | ![Calorias5](https://res.cloudinary.com/getoutbcn/image/upload/v1697737848/portfolio/projects/caloriestracker/Calorias5_aeq3y5.png) | ![Calorias6](https://res.cloudinary.com/getoutbcn/image/upload/v1697737849/portfolio/projects/caloriestracker/Calorias6_mi5q9p.png)
 
-```bash
-# using npm
-npm run android
 
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.

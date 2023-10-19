@@ -7,13 +7,21 @@ import {useNavigation, useFocusEffect} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {Meal, RootStackParamList} from '../../types';
 import useFoodStorage from '../../hooks/useFoodStorage';
-import TodayCalories from '../../components/TodayCalories';
+import TodayCalories, {
+  TodayCaloriesProps,
+} from '../../components/TodayCalories';
+import TodayMeals from '../../components/TodayMeals';
 
 const totalCaloriesPerDay = 2000;
 
 const Home = () => {
   const [todayFood, setTodayFood] = useState<Meal[]>([]);
-  const [todayStatistics, setTodayStatistics] = useState<any>();
+  const [todayStatistics, setTodayStatistics] = useState<TodayCaloriesProps>({
+    consumed: 0,
+    percentage: 0,
+    remaining: 0,
+    total: totalCaloriesPerDay,
+  });
   const {onGetTodayFood} = useFoodStorage();
   const {navigate} =
     useNavigation<StackNavigationProp<RootStackParamList, 'Home'>>();
@@ -31,6 +39,7 @@ const Home = () => {
         consumed: caloriesConsumed,
         percentage,
         remaining: remainingCalories,
+        total: totalCaloriesPerDay,
       });
     } catch (error) {
       console.error(error);
@@ -77,6 +86,10 @@ const Home = () => {
         </View>
       </View>
       <TodayCalories {...todayStatistics} />
+      <TodayMeals
+        foods={todayFood}
+        onCompleteAddRemove={() => loadTodayFood()}
+      />
     </View>
   );
 };
