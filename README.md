@@ -1,11 +1,10 @@
 # Calorie Tracker App (React Native)
 
-![App Screenshot](screenshot.png)
-
 A simple React Native app for tracking daily calorie consumption, with the ability to add and remove meals and see how many calories of the recommended daily total you have in a circular graph.
 
 ## Features
 
+- Done with React Native CLI.
 - Track daily calorie consumption, compare it to the recommended total, and visualize it on a circular chart.
 - Add and remove meals for the day.
 - Two screens: a main screen with the pie chart showing the percentage of recommended daily calories with the meals of the day and an "Add Meal" screen for adding generic meals with calories and portions.
